@@ -6,7 +6,7 @@ namespace Steamworks
 	public struct SteamNetworkingMessage_t
 	{
 		/// Message payload
-		public IntPtr m_pData;
+		public nint m_pData;
 
 		/// Size of the payload.
 		public int m_cbSize;
@@ -55,12 +55,12 @@ namespace Steamworks
 		/// usually be something like:
 		///
 		/// free( pMsg->m_pData );
-		public IntPtr m_pfnFreeData;
+		public nint m_pfnFreeData;
 
 		/// Function to used to decrement the internal reference count and, if
 		/// it's zero, release the message.  You should not set this function pointer,
 		/// or need to access this directly!  Use the Release() function instead!
-		internal IntPtr m_pfnRelease;
+		internal nint m_pfnRelease;
 
 		/// When using ISteamNetworkingMessages, the channel number the message was received on
 		/// (Not used for messages sent or received on "connections")
@@ -87,19 +87,19 @@ namespace Steamworks
 		/// You MUST call this when you're done with the object,
 		/// to free up memory, etc.
 		public void Release() {
-			throw new System.NotImplementedException("Please use the static Release function instead which takes an IntPtr.");
+			throw new System.NotImplementedException("Please use the static Release function instead which takes an nint.");
 		}
 
 		/// You MUST call this when you're done with the object,
 		/// to free up memory, etc.
 		/// This is a Steamworks.NET extension.
-		public static void Release(IntPtr pointer) {
+		public static void Release(nint pointer) {
 			NativeMethods.SteamAPI_SteamNetworkingMessage_t_Release(pointer);
 		}
 
-		/// Convert an IntPtr received from ISteamNetworkingSockets.ReceiveMessagesOnPollGroup into our structure.
+		/// Convert an nint received from ISteamNetworkingSockets.ReceiveMessagesOnPollGroup into our structure.
 		/// This is a Steamworks.NET extension.
-		public static SteamNetworkingMessage_t FromIntPtr(IntPtr pointer) {
+		public static SteamNetworkingMessage_t Fromnint(nint pointer) {
 			return Marshal.PtrToStructure<SteamNetworkingMessage_t>(pointer);
 		}
 	}

@@ -22,16 +22,16 @@ g_SkippedInterfaces = (
 
 g_TypeDict = {
     # Built in types
-    "char*": "IntPtr",
-    "char *": "IntPtr",
-    "char **": "out IntPtr",
+    "char*": "nint",
+    "char *": "nint",
+    "char **": "out nint",
     "const char*": "InteropHelp.UTF8StringHandle",
     "const char *": "InteropHelp.UTF8StringHandle",
 
-    "const void *": "IntPtr",
+    "const void *": "nint",
     "unsigned short": "ushort",
-    "void *": "IntPtr",
-    "void*": "IntPtr",
+    "void *": "nint",
+    "void*": "nint",
 
     "uint8": "byte",
 
@@ -48,21 +48,21 @@ g_TypeDict = {
     "uint64_t": "ulong",
     "size_t": "ulong",
 
-    "intptr_t": "IntPtr",
+    "nint_t": "nint",
 
     # Only used in FileLoadDialogResponse
-    "const char **": "IntPtr",
+    "const char **": "nint",
 
     "RTime32": "uint",
     "const SteamItemInstanceID_t": "SteamItemInstanceID_t",
     "const SteamItemDef_t": "SteamItemDef_t",
-    "SteamParamStringArray_t *": "IntPtr",
-    "const SteamParamStringArray_t *": "IntPtr",
-    "ISteamMatchmakingServerListResponse *": "IntPtr",
-    "ISteamMatchmakingPingResponse *": "IntPtr",
-    "ISteamMatchmakingPlayersResponse *": "IntPtr",
-    "ISteamMatchmakingRulesResponse *": "IntPtr",
-    #"MatchMakingKeyValuePair_t **": "IntPtr", HACK in parse_args()
+    "SteamParamStringArray_t *": "nint",
+    "const SteamParamStringArray_t *": "nint",
+    "ISteamMatchmakingServerListResponse *": "nint",
+    "ISteamMatchmakingPingResponse *": "nint",
+    "ISteamMatchmakingPlayersResponse *": "nint",
+    "ISteamMatchmakingRulesResponse *": "nint",
+    #"MatchMakingKeyValuePair_t **": "nint", HACK in parse_args()
 
     "ControllerAnalogActionData_t": "InputAnalogActionData_t",
     "ControllerDigitalActionData_t": "InputDigitalActionData_t",
@@ -77,14 +77,14 @@ g_TypeDict = {
     "const SteamNetworkingIdentity *": "ref SteamNetworkingIdentity",
     "SteamNetworkingErrMsg &": "out SteamNetworkingErrMsg",
     "const SteamNetConnectionInfo_t &": "ref SteamNetConnectionInfo_t",
-    "SteamNetworkingMessage_t": "IntPtr",
+    "SteamNetworkingMessage_t": "nint",
 
     # SteamNetworkingTypes which are stubbed
-    "SteamDatagramGameCoordinatorServerLogin *": "IntPtr",
-    "ISteamNetworkingFakeUDPPort *": "IntPtr",
+    "SteamDatagramGameCoordinatorServerLogin *": "nint",
+    "ISteamNetworkingFakeUDPPort *": "nint",
 
     # External type that we don't currently support.
-    "const ScePadTriggerEffectParam *": "IntPtr"
+    "const ScePadTriggerEffectParam *": "nint"
 }
 
 g_WrapperArgsTypeDict = {
@@ -100,40 +100,40 @@ g_WrapperArgsTypeDict = {
 
 g_ReturnTypeDict = {
     # Built in types
-    "const char *": "IntPtr",
+    "const char *": "nint",
 
     # Steamworks types
     "CSteamID": "ulong",
-    "gameserveritem_t *": "IntPtr",
-    "SteamNetworkingMessage_t *": "IntPtr",
+    "gameserveritem_t *": "nint",
+    "SteamNetworkingMessage_t *": "nint",
 
     # TODO: UGH
-    "ISteamApps *": "IntPtr",
-    "ISteamController *": "IntPtr",
-    "ISteamFriends *": "IntPtr",
-    "ISteamGameSearch *": "IntPtr",
-    "ISteamGameServer *": "IntPtr",
-    "ISteamGameServerStats *": "IntPtr",
-    "ISteamHTMLSurface *": "IntPtr",
-    "ISteamHTTP *": "IntPtr",
-    "ISteamInput *": "IntPtr",
-    "ISteamInventory *": "IntPtr",
-    "ISteamMatchmaking *": "IntPtr",
-    "ISteamMatchmakingServers *": "IntPtr",
-    "ISteamMusic *": "IntPtr",
-    "ISteamMusicRemote *": "IntPtr",
-    "ISteamNetworking *": "IntPtr",
-    "ISteamParentalSettings *": "IntPtr",
-    "ISteamParties *": "IntPtr",
-    "ISteamPS3OverlayRender *": "IntPtr",
-    "ISteamRemotePlay *": "IntPtr",
-    "ISteamRemoteStorage *": "IntPtr",
-    "ISteamScreenshots *": "IntPtr",
-    "ISteamUGC *": "IntPtr",
-    "ISteamUser *": "IntPtr",
-    "ISteamUserStats *": "IntPtr",
-    "ISteamUtils *": "IntPtr",
-    "ISteamVideo *": "IntPtr",
+    "ISteamApps *": "nint",
+    "ISteamController *": "nint",
+    "ISteamFriends *": "nint",
+    "ISteamGameSearch *": "nint",
+    "ISteamGameServer *": "nint",
+    "ISteamGameServerStats *": "nint",
+    "ISteamHTMLSurface *": "nint",
+    "ISteamHTTP *": "nint",
+    "ISteamInput *": "nint",
+    "ISteamInventory *": "nint",
+    "ISteamMatchmaking *": "nint",
+    "ISteamMatchmakingServers *": "nint",
+    "ISteamMusic *": "nint",
+    "ISteamMusicRemote *": "nint",
+    "ISteamNetworking *": "nint",
+    "ISteamParentalSettings *": "nint",
+    "ISteamParties *": "nint",
+    "ISteamPS3OverlayRender *": "nint",
+    "ISteamRemotePlay *": "nint",
+    "ISteamRemoteStorage *": "nint",
+    "ISteamScreenshots *": "nint",
+    "ISteamUGC *": "nint",
+    "ISteamUser *": "nint",
+    "ISteamUserStats *": "nint",
+    "ISteamUtils *": "nint",
+    "ISteamVideo *": "nint",
 }
 
 g_SpecialReturnTypeDict = {
@@ -331,11 +331,11 @@ g_SpecialArgsDict = {
     },
 
     "ISteamNetworkingSockets_SendMessages": {
-        "pMessages": "IntPtr[]",
+        "pMessages": "nint[]",
         "pOutMessageNumberOrResult": "long[]",
     },
     "ISteamGameServerNetworkingSockets_SendMessages": {
-        "pMessages": "IntPtr[]",
+        "pMessages": "nint[]",
         "pOutMessageNumberOrResult": "long[]",
     },
 
@@ -463,12 +463,12 @@ g_SpecialArgsDict = {
         "pAuthBlob": "byte[]",
     },
     "ISteamUser_GetAvailableVoice": {
-        "pcbUncompressed_Deprecated": "IntPtr",
+        "pcbUncompressed_Deprecated": "nint",
     },
     "ISteamUser_GetVoice": {
         "pDestBuffer": "byte[]",
-        "pUncompressedDestBuffer_Deprecated": "IntPtr",
-        "nUncompressBytesWritten_Deprecated": "IntPtr",
+        "pUncompressedDestBuffer_Deprecated": "nint",
+        "nUncompressBytesWritten_Deprecated": "nint",
     },
     "ISteamUser_DecompressVoice": {
         "pCompressed": "byte[]",
@@ -788,14 +788,14 @@ def parse_func(f, interface, func):
 
         for i, a in enumerate(outstringargs):
             if not outstringsize:
-                functionBody.append("\t\t\tIntPtr " + a + "2;")
+                functionBody.append("\t\t\tnint " + a + "2;")
                 continue
 
             cast = ""
             if outstringsize[i].type != "int":
                 cast = "(int)"
 
-            functionBody.append("\t\t\tIntPtr " + a + "2 = Marshal.AllocHGlobal(" + cast + outstringsize[i].name + ");")
+            functionBody.append("\t\t\tnint " + a + "2 = Marshal.AllocHGlobal(" + cast + outstringsize[i].name + ");")
 
     indentlevel = "\t\t\t"
     if stringargs:
@@ -858,7 +858,7 @@ def parse_func(f, interface, func):
     g_Output.append("")
 
 def parse_args(strEntryPoint, args):
-    pinvokeargs = "IntPtr instancePtr, "
+    pinvokeargs = "nint instancePtr, "
     wrapperargs = ""
     argnames = ""
     stringargs = []
@@ -898,7 +898,7 @@ def parse_args(strEntryPoint, args):
 
 
         if arg.type == "MatchMakingKeyValuePair_t **":  # TODO: Fixme - Small Hack... We do this because MatchMakingKeyValuePair's have ARRAY_COUNT() and two **'s, things get broken :(
-            argtype = "IntPtr"
+            argtype = "nint"
 
         # We skip byte[] because it is a primitive type that C# can essentially mmap and get a great perf increase while marshalling.
         # We need to do this for other primitive types eventually but that will require more testing to make sure nothing breaks.
@@ -933,10 +933,10 @@ def parse_args(strEntryPoint, args):
         elif wrapperargtype == "MatchMakingKeyValuePair_t[]":
             argnames += "new MMKVPMarshaller(" + arg.name + ")"
         elif wrapperargtype.endswith("Response"):
-            argnames += "(IntPtr)" + arg.name
+            argnames += "(nint)" + arg.name
         elif arg.name.endswith("Deprecated"):
-            if argtype == "IntPtr":
-                argnames += "IntPtr.Zero"
+            if argtype == "nint":
+                argnames += "nint.Zero"
             elif argtype == "bool":
                 argnames += "false"
             else:

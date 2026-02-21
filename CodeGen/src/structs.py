@@ -12,9 +12,9 @@ g_TypeConversionDict = {
     "int32": "int",
     "int64": "long",
 
-    "uint8 *": "IntPtr",
+    "uint8 *": "nint",
     "const char *": "string",
-    "const char **": "IntPtr",
+    "const char **": "nint",
 
     # This is for CallbackMsg_t
     "HSteamUser": "int"
@@ -72,7 +72,7 @@ g_SpecialFieldTypes = {
     },
 
     "HTML_NeedsPaint_t": {
-        "pBGRA": "IntPtr"
+        "pBGRA": "nint"
     },
 
     # These two are returned by a function and the struct needs to be blittable.

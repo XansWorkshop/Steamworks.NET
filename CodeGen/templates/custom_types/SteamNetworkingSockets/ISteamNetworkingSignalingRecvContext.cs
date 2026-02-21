@@ -32,7 +32,7 @@ namespace Steamworks
 		///
 		/// After accepting a connection (through either means), the connection
 		/// will transition into the "finding route" state.
-		public IntPtr OnConnectRequest(HSteamNetConnection hConn, ref SteamNetworkingIdentity identityPeer, int nLocalVirtualPort) {
+		public nint OnConnectRequest(HSteamNetConnection hConn, ref SteamNetworkingIdentity identityPeer, int nLocalVirtualPort) {
 			return NativeMethods.SteamAPI_ISteamNetworkingSignalingRecvContext_OnConnectRequest(ref this, hConn, ref identityPeer, nLocalVirtualPort);
 		}
 
@@ -40,7 +40,7 @@ namespace Steamworks
 		/// to the incoming message.  If you intend to ignore all incoming requests
 		/// that you do not wish to accept, then it's not strictly necessary to
 		/// implement this.
-		public void SendRejectionSignal(ref SteamNetworkingIdentity identityPeer, IntPtr pMsg, int cbMsg) {
+		public void SendRejectionSignal(ref SteamNetworkingIdentity identityPeer, nint pMsg, int cbMsg) {
 			NativeMethods.SteamAPI_ISteamNetworkingSignalingRecvContext_SendRejectionSignal(ref this, ref identityPeer, pMsg, cbMsg);
 		}
 	}

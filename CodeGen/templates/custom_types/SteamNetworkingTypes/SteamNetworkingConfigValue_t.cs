@@ -37,10 +37,10 @@ namespace Steamworks
 			public float m_float;
 
 			[FieldOffset(0)]
-			public IntPtr m_string; // Points to your '\0'-terminated buffer
+			public nint m_string; // Points to your '\0'-terminated buffer
 
 			[FieldOffset(0)]
-			public IntPtr m_functionPtr;
+			public nint m_functionPtr;
 		}
 	}
 }

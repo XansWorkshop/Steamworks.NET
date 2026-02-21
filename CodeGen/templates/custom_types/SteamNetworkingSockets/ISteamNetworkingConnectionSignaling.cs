@@ -26,7 +26,7 @@ namespace Steamworks
 		/// Signaling objects will not be shared between connections.
 		/// You can assume that the same value of hConn will be used
 		/// every time.
-		public bool SendSignal(HSteamNetConnection hConn, ref SteamNetConnectionInfo_t info, IntPtr pMsg, int cbMsg) {
+		public bool SendSignal(HSteamNetConnection hConn, ref SteamNetConnectionInfo_t info, nint pMsg, int cbMsg) {
 			return NativeMethods.SteamAPI_ISteamNetworkingConnectionSignaling_SendSignal(ref this, hConn, ref info, pMsg, cbMsg);
 		}
 

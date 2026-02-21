@@ -194,7 +194,7 @@ namespace Steamworks
 		///
 		/// See also SteamNetworkingIPAddrRender
 		public void ToString(out string buf) {
-			IntPtr buf2 = Marshal.AllocHGlobal(k_cchMaxString);
+			nint buf2 = Marshal.AllocHGlobal(k_cchMaxString);
 			NativeMethods.SteamAPI_SteamNetworkingIdentity_ToString(ref this, buf2, k_cchMaxString);
 			buf = InteropHelp.PtrToStringUTF8(buf2);
 			Marshal.FreeHGlobal(buf2);

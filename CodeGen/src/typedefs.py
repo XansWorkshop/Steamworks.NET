@@ -19,7 +19,7 @@ g_TypeDict = {
     "int64": "long",
     "uint32": "uint",
     "uint64": "ulong",
-    "void*": "System.IntPtr",
+    "void*": "nint",
 }
 
 g_UnusedTypedefs = [
@@ -68,7 +68,7 @@ g_ReadOnlyValues = {
     ]),
 
     "HServerListRequest": OrderedDict([
-        ("Invalid", "System.IntPtr.Zero"),
+        ("Invalid", "nint.Zero"),
     ]),
 
     "HServerQuery": OrderedDict([
@@ -182,7 +182,7 @@ def main(parser):
 
         ourtemplate = template
         ourtype = g_TypeDict.get(t.type, t.type)
-        if ourtype == "System.IntPtr":
+        if ourtype == "nint":
             ourtemplate = ourtemplate.replace(", System.IComparable<{NAME}>", "", 1)
             ourtemplate = ourtemplate.replace("""
 \t\tpublic int CompareTo({NAME} other) {
