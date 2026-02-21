@@ -16,6 +16,10 @@
 
 #if !DISABLESTEAMWORKS
 
+using System.Runtime.InteropServices;
+#pragma warning disable IDE0130 // Namespace does not match folder structure
+#pragma warning disable CS1591 // Missing documentation
+
 // If we're running in the Unity Editor we need the editors platform.
 #if UNITY_EDITOR_WIN
 #define VALVE_CALLBACK_PACK_LARGE
@@ -39,10 +43,10 @@
 #warning You need to define STEAMWORKS_WIN, or STEAMWORKS_LIN_OSX. Refer to the readme for more details.
 #endif
 
-using System.Runtime.InteropServices;
-using IntPtr = System.IntPtr;
-
 namespace Steamworks {
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public static class Packsize {
 #if VALVE_CALLBACK_PACK_LARGE
 		public const int value = 8;

@@ -71,6 +71,12 @@ def main(parser):
             if enum.name in g_FlagEnums:
                 lines.append("\t[Flags]")
 
+            ########################################################################################
+            # Added by Xan
+            lines.append("#if THE_CONSERVATORY")
+            lines.append("\t[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]")
+            lines.append("#endif")
+            ########################################################################################
             lines.append("\tpublic enum " + enum.name + " : int {")
 
             for field in enum.fields:

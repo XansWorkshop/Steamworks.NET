@@ -21,8 +21,16 @@
 
 using System.Runtime.InteropServices;
 
+#pragma warning disable IDE0130 // Namespace does not match folder structure
+#pragma warning disable CS1591 // Missing documentation
+#pragma warning disable IDE0130 // Namespace does not match folder structure
+#pragma warning disable CS1591 // Missing documentation
+
 namespace Steamworks {
 	[System.Serializable]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct FriendsGroupID_t : System.IEquatable<FriendsGroupID_t>, System.IComparable<FriendsGroupID_t> {
 		public static readonly FriendsGroupID_t Invalid = new FriendsGroupID_t(-1);
 		public short m_FriendsGroupID;

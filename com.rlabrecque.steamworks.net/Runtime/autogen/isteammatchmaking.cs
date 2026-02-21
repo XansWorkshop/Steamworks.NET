@@ -21,7 +21,12 @@
 
 using System.Runtime.InteropServices;
 
+#pragma warning disable IDE0130 // Namespace does not match folder structure
+#pragma warning disable CS1591 // Missing documentation
 namespace Steamworks {
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public static class SteamMatchmaking {
 		/// <summary>
 		/// <para> game server favorites storage</para>
@@ -432,6 +437,9 @@ namespace Steamworks {
 			return NativeMethods.ISteamMatchmaking_SetLinkedLobby(CSteamAPIContext.GetSteamMatchmaking(), steamIDLobby, steamIDLobbyDependent);
 		}
 	}
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public static class SteamMatchmakingServers {
 		/// <summary>
 		/// <para> Request a new list of servers of a particular type.  These calls each correspond to one of the EMatchMakingType values.</para>
@@ -632,6 +640,9 @@ namespace Steamworks {
 			NativeMethods.ISteamMatchmakingServers_CancelServerQuery(CSteamAPIContext.GetSteamMatchmakingServers(), hServerQuery);
 		}
 	}
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public static class SteamParties {
 		/// <summary>
 		/// <para> =============================================================================================</para>

@@ -21,6 +21,8 @@
 
 using System.Runtime.InteropServices;
 
+#pragma warning disable IDE0130 // Namespace does not match folder structure
+#pragma warning disable CS1591 // Missing documentation
 namespace Steamworks {
 	[System.Runtime.InteropServices.UnmanagedFunctionPointer(System.Runtime.InteropServices.CallingConvention.StdCall)] // TODO: This is probably wrong, will likely crash on some platform.
 	public delegate void SteamAPI_CheckCallbackRegistered_t(int iCallbackNum);

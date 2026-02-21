@@ -21,6 +21,8 @@
 
 using System.Runtime.InteropServices;
 
+#pragma warning disable IDE0130 // Namespace does not match folder structure
+#pragma warning disable CS1591 // Missing documentation
 namespace Steamworks {
 	// servernetadr_t is all the addressing info the serverbrowser needs to know about a game server,
 	// namely: its IP, its connection port, and its query port.

@@ -21,6 +21,8 @@
 
 using System.Runtime.InteropServices;
 
+#pragma warning disable IDE0130 // Namespace does not match folder structure
+#pragma warning disable CS1591 // Missing documentation
 namespace Steamworks
 {
 	/// Interface used to send signaling messages for a particular connection.

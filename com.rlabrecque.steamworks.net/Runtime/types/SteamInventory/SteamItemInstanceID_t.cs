@@ -21,8 +21,16 @@
 
 using System.Runtime.InteropServices;
 
+#pragma warning disable IDE0130 // Namespace does not match folder structure
+#pragma warning disable CS1591 // Missing documentation
+#pragma warning disable IDE0130 // Namespace does not match folder structure
+#pragma warning disable CS1591 // Missing documentation
+
 namespace Steamworks {
 	[System.Serializable]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamItemInstanceID_t : System.IEquatable<SteamItemInstanceID_t>, System.IComparable<SteamItemInstanceID_t> {
 		public static readonly SteamItemInstanceID_t Invalid = new SteamItemInstanceID_t(0xFFFFFFFFFFFFFFFF);
 		public ulong m_SteamItemInstanceID;

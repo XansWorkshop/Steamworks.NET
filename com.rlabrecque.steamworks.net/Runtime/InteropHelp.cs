@@ -16,11 +16,17 @@
 
 #if !DISABLESTEAMWORKS
 
+#pragma warning disable IDE0130 // Namespace does not match folder structure
+#pragma warning disable CS1591 // Missing documentation
+
 using System;
 using System.Runtime.InteropServices;
 using System.Text;
 
 namespace Steamworks {
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public class InteropHelp {
 		public static void TestIfPlatformSupported() {
 #if !UNITY_EDITOR && !UNITY_STANDALONE && !UNITY_ANDROID && !STEAMWORKS_WIN && !STEAMWORKS_LIN_OSX
@@ -47,8 +53,8 @@ namespace Steamworks {
 		}
 
 		// This continues to exist for both 'out string' and strings returned by Steamworks functions.
-		public static string PtrToStringUTF8(IntPtr nativeUtf8) {
-			if (nativeUtf8 == IntPtr.Zero) {
+		public static string PtrToStringUTF8(nint nativeUtf8) {
+			if (nativeUtf8 == 0) {
 				return null;
 			}
 
@@ -86,18 +92,21 @@ namespace Steamworks {
 		// This is for 'const char *' arguments which we need to ensure do not get GC'd while Steam is using them.
 		// We can't use an ICustomMarshaler because Unity crashes when a string between 96 and 127 characters long is defined/initialized at the top of class scope...
 #if UNITY_EDITOR || UNITY_STANDALONE || UNITY_ANDROID || STEAMWORKS_WIN || STEAMWORKS_LIN_OSX
+#if THE_CONSERVATORY
+		[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 		public class UTF8StringHandle : Microsoft.Win32.SafeHandles.SafeHandleZeroOrMinusOneIsInvalid {
 			public UTF8StringHandle(string str)
 				: base(true) {
 				if (str == null) {
-					SetHandle(IntPtr.Zero);
+					SetHandle(0);
 					return;
 				}
 
 				// +1 for '\0'
 				byte[] strbuf = new byte[Encoding.UTF8.GetByteCount(str) + 1];
 				Encoding.UTF8.GetBytes(str, 0, str.Length, strbuf, 0);
-				IntPtr buffer = Marshal.AllocHGlobal(strbuf.Length);
+				nint buffer = Marshal.AllocHGlobal(strbuf.Length);
 				Marshal.Copy(strbuf, 0, buffer, strbuf.Length);
 
 				SetHandle(buffer);
@@ -111,6 +120,10 @@ namespace Steamworks {
 			}
 		}
 #else
+
+#if THE_CONSERVATORY
+		[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 		public class UTF8StringHandle : IDisposable {
 			public UTF8StringHandle(string str) { }
 			public void Dispose() {}
@@ -119,21 +132,24 @@ namespace Steamworks {
 
 		// TODO - Should be IDisposable
 		// We can't use an ICustomMarshaler because Unity dies when MarshalManagedToNative() gets called with a generic type.
+#if THE_CONSERVATORY
+		[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 		public class SteamParamStringArray {
 			// The pointer to each AllocHGlobal() string
-			IntPtr[] m_Strings;
+			nint[] m_Strings;
 			// The pointer to the condensed version of m_Strings
-			IntPtr m_ptrStrings;
+			nint m_ptrStrings;
 			// The pointer to the StructureToPtr version of SteamParamStringArray_t that will get marshaled
-			IntPtr m_pSteamParamStringArray;
+			nint m_pSteamParamStringArray;
 
 			public SteamParamStringArray(System.Collections.Generic.IList<string> strings) {
 				if (strings == null) {
-					m_pSteamParamStringArray = IntPtr.Zero;
+					m_pSteamParamStringArray = 0;
 					return;
 				}
 
-				m_Strings = new IntPtr[strings.Count];
+				m_Strings = new nint[strings.Count];
 				for (int i = 0; i < strings.Count; ++i) {
 					byte[] strbuf = new byte[Encoding.UTF8.GetByteCount(strings[i]) + 1];
 					Encoding.UTF8.GetBytes(strings[i], 0, strings[i].Length, strbuf, 0);
@@ -141,7 +157,7 @@ namespace Steamworks {
 					Marshal.Copy(strbuf, 0, m_Strings[i], strbuf.Length);
 				}
 
-				m_ptrStrings = Marshal.AllocHGlobal(Marshal.SizeOf<IntPtr>() * m_Strings.Length);
+				m_ptrStrings = Marshal.AllocHGlobal(Marshal.SizeOf<nint>() * m_Strings.Length);
 				SteamParamStringArray_t stringArray = new SteamParamStringArray_t() {
 					m_ppStrings = m_ptrStrings,
 					m_nNumStrings = m_Strings.Length
@@ -154,21 +170,21 @@ namespace Steamworks {
 
 			~SteamParamStringArray() {
 				if (m_Strings != null) {
-					foreach (IntPtr ptr in m_Strings) {
+					foreach (nint ptr in m_Strings) {
 						Marshal.FreeHGlobal(ptr);
 					}
                 }
 
-				if (m_ptrStrings != IntPtr.Zero) {
+				if (m_ptrStrings != 0) {
 					Marshal.FreeHGlobal(m_ptrStrings);
 				}
 
-				if (m_pSteamParamStringArray != IntPtr.Zero) {
+				if (m_pSteamParamStringArray != 0) {
 					Marshal.FreeHGlobal(m_pSteamParamStringArray);
 				}
 			}
 
-			public static implicit operator IntPtr(SteamParamStringArray that) {
+			public static implicit operator nint(SteamParamStringArray that) {
 				return that.m_pSteamParamStringArray;
 			}
 		}
@@ -176,9 +192,12 @@ namespace Steamworks {
 
 	// TODO - Should be IDisposable
 	// MatchMaking Key-Value Pair Marshaller
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public class MMKVPMarshaller {
-		private IntPtr m_pNativeArray;
-		private IntPtr m_pArrayEntries;
+		private nint m_pNativeArray;
+		private nint m_pArrayEntries;
 
 		public MMKVPMarshaller(MatchMakingKeyValuePair_t[] filters) {
 			if (filters == null) {
@@ -187,36 +206,39 @@ namespace Steamworks {
 
 			int sizeOfMMKVP = Marshal.SizeOf<MatchMakingKeyValuePair_t>();
 
-			m_pNativeArray = Marshal.AllocHGlobal(Marshal.SizeOf<IntPtr>() * filters.Length);
+			m_pNativeArray = Marshal.AllocHGlobal(Marshal.SizeOf<nint>() * filters.Length);
 			m_pArrayEntries = Marshal.AllocHGlobal(sizeOfMMKVP * filters.Length);
 			for (int i = 0; i < filters.Length; ++i) {
-				Marshal.StructureToPtr(filters[i], new IntPtr(m_pArrayEntries.ToInt64() + (i * sizeOfMMKVP)), false);
+				Marshal.StructureToPtr(filters[i], new nint(m_pArrayEntries.ToInt64() + (i * sizeOfMMKVP)), false);
 			}
 
-			Marshal.WriteIntPtr(m_pNativeArray, m_pArrayEntries);
+			Marshal.Writenint(m_pNativeArray, m_pArrayEntries);
 		}
 
 		~MMKVPMarshaller() {
-			if (m_pArrayEntries != IntPtr.Zero) {
+			if (m_pArrayEntries != 0) {
 				Marshal.FreeHGlobal(m_pArrayEntries);
 			}
-			if (m_pNativeArray != IntPtr.Zero) {
+			if (m_pNativeArray != 0) {
 				Marshal.FreeHGlobal(m_pNativeArray);
 			}
 		}
 
-		public static implicit operator IntPtr(MMKVPMarshaller that) {
+		public static implicit operator nint(MMKVPMarshaller that) {
 			return that.m_pNativeArray;
 		}
 	}
-
+	
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public class DllCheck {
 #if DISABLED
 		[DllImport("kernel32.dll")]
-		public static extern IntPtr GetModuleHandle(string lpModuleName);
+		public static extern nint GetModuleHandle(string lpModuleName);
 
 		[DllImport("kernel32.dll", CharSet = CharSet.Auto)]
-		extern static int GetModuleFileName(IntPtr hModule, StringBuilder strFullPath, int nSize);
+		extern static int GetModuleFileName(nint hModule, StringBuilder strFullPath, int nSize);
 #endif
 
 		/// <summary>
@@ -233,7 +255,7 @@ namespace Steamworks {
 		private static bool CheckSteamAPIDLL() {
 			string fileName;
 			int fileBytes;
-			if (IntPtr.Size == 4) {
+			if (nint.Size == 4) {
 				fileName = "steam_api.dll";
 				fileBytes = Version.SteamAPIDLLSize;
 			}
@@ -242,8 +264,8 @@ namespace Steamworks {
 				fileBytes = Version.SteamAPI64DLLSize;
 			}
 
-			IntPtr handle = GetModuleHandle(fileName);
-			if (handle == IntPtr.Zero) {
+			nint handle = GetModuleHandle(fileName);
+			if (handle == 0) {
 				return true;
 			}
 

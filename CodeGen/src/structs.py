@@ -155,6 +155,12 @@ def parse(struct):
             lines.append("\t[StructLayout(LayoutKind.Sequential)]")
             break
 
+    ########################################################################################
+    # Added by Xan
+    lines.append("#if THE_CONSERVATORY")
+    lines.append("\t[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]")
+    lines.append("#endif")
+    ########################################################################################
     lines.append("\tpublic struct " + structname + " {")
 
     lines.extend(insert_constructors(structname))

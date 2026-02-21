@@ -21,7 +21,12 @@
 
 using System.Runtime.InteropServices;
 
+#pragma warning disable IDE0130 // Namespace does not match folder structure
+#pragma warning disable CS1591 // Missing documentation
 namespace Steamworks {
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public static class SteamGameServerNetworkingMessages {
 		/// <summary>
 		/// <para>/ Sends a message to the specified host.  If we don't already have a session with that user,</para>

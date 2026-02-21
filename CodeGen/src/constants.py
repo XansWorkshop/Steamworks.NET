@@ -156,6 +156,13 @@ def main(parser):
         with open("templates/header.txt", "r") as f:
             out.write(bytes(f.read(), "utf-8"))
         out.write(bytes("namespace Steamworks {\n", "utf-8"))
+
+        ########################################################################################
+        # Added by Xan
+        out.write("#if THE_CONSERVATORY\n", "utf-8")
+        out.write("\t[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]\n", "utf-8")
+        out.write("#endif\n", "utf-8")
+        ########################################################################################
         out.write(bytes("\tpublic static class Constants {\n", "utf-8"))
         for line in lines:
             out.write(bytes("\t\t" + line + "\n", "utf-8"))

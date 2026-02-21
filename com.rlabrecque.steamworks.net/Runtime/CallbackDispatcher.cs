@@ -16,6 +16,9 @@
 
 #if !DISABLESTEAMWORKS
 
+#pragma warning disable IDE0130 // Namespace does not match folder structure
+#pragma warning disable CS1591 // Missing documentation
+
 #if UNITY_3_5 || UNITY_4_0 || UNITY_4_1 || UNITY_4_2 || UNITY_4_3 || UNITY_4_5 || UNITY_4_6
 #error Unsupported Unity platform. Steamworks.NET requires Unity 4.7 or higher.
 #elif UNITY_4_7 || UNITY_5 || UNITY_2017 || UNITY_2017_1_OR_NEWER
@@ -36,7 +39,7 @@ using System.ComponentModel;
 using System.Runtime.InteropServices;
 
 namespace Steamworks {
-	public static class CallbackDispatcher {
+	internal static class CallbackDispatcher {
 		public delegate void SteamworksExceptionHandler(Exception e);
 
 		// We catch exceptions inside callbacks and reroute them here.
@@ -63,7 +66,7 @@ namespace Steamworks {
 		private static Dictionary<int, List<Callback>> m_registeredGameServerCallbacks = new Dictionary<int, List<Callback>>();
 		private static Dictionary<ulong, List<CallResult>> m_registeredCallResults = new Dictionary<ulong, List<CallResult>>();
 		private static object m_sync = new object();
-		private static IntPtr m_pCallbackMsg;
+		private static nint m_pCallbackMsg;
 		private static int m_initCount;
 
 #if UNITY_2019_3_OR_NEWER
@@ -95,7 +98,7 @@ namespace Steamworks {
 				if (m_initCount == 0) {
 					UnregisterAll();
 					Marshal.FreeHGlobal(m_pCallbackMsg);
-					m_pCallbackMsg = IntPtr.Zero;
+					m_pCallbackMsg = 0;
 				}
 			}
 		}
@@ -199,7 +202,7 @@ namespace Steamworks {
 					// Check for dispatching API call results
 					if (callbackMsg.m_iCallback == SteamAPICallCompleted_t.k_iCallback) {
 						SteamAPICallCompleted_t callCompletedCb = Marshal.PtrToStructure<SteamAPICallCompleted_t>(callbackMsg.m_pubParam);
-						IntPtr pTmpCallResult = Marshal.AllocHGlobal((int)callCompletedCb.m_cubParam);
+						nint pTmpCallResult = Marshal.AllocHGlobal((int)callCompletedCb.m_cubParam);
 						bool bFailed;
 						if (NativeMethods.SteamAPI_ManualDispatch_GetAPICallResult(hSteamPipe, callCompletedCb.m_hAsyncCall, pTmpCallResult, (int)callCompletedCb.m_cubParam, callCompletedCb.m_iCallback, out bFailed)) {
 							lock (m_sync) {
@@ -242,7 +245,7 @@ namespace Steamworks {
 	public abstract class Callback {
 		public abstract bool IsGameServer { get; }
 		internal abstract Type GetCallbackType();
-		internal abstract void OnRunCallback(IntPtr pvParam);
+		internal abstract void OnRunCallback(nint pvParam);
 		internal abstract void SetUnregistered();
 	}
 
@@ -324,7 +327,7 @@ namespace Steamworks {
 			return typeof(T);
 		}
 
-		internal override void OnRunCallback(IntPtr pvParam) {
+		internal override void OnRunCallback(nint pvParam) {
 			try {
 				m_Func(Marshal.PtrToStructure<T>(pvParam));
 			}
@@ -344,7 +347,7 @@ namespace Steamworks {
 	[EditorBrowsable(EditorBrowsableState.Never)] // hide this class from intellisense
 	public abstract class CallResult {
 		internal protected abstract Type GetCallbackType();
-		internal protected abstract void OnRunCallResult(IntPtr pvParam, bool bFailed, ulong hSteamAPICall);
+		internal protected abstract void OnRunCallResult(nint pvParam, bool bFailed, ulong hSteamAPICall);
 		internal protected abstract void SetUnregistered();
 	}
 
@@ -421,7 +424,7 @@ namespace Steamworks {
 			return typeof(T);
 		}
 
-		internal protected override void OnRunCallResult(IntPtr pvParam, bool bFailed, ulong hSteamAPICall_) {
+		internal protected override void OnRunCallResult(nint pvParam, bool bFailed, ulong hSteamAPICall_) {
 			SteamAPICall_t hSteamAPICall = (SteamAPICall_t)hSteamAPICall_;
 			if (hSteamAPICall == m_hAPICall) {
 				try {

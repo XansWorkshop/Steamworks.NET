@@ -650,6 +650,12 @@ def parse_interface(f, interface):
         return
 
     print(" - " + interface.name)
+    ########################################################################################
+    # Added by Xan
+    g_Output.append("#if THE_CONSERVATORY")
+    g_Output.append("\t[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]")
+    g_Output.append("#endif")
+    ########################################################################################
     g_Output.append('\tpublic static class ' + interface.name[1:] + ' {')
 
     if "GameServer" in interface.name and interface.name != "ISteamGameServer" and interface.name != "ISteamGameServerStats":
@@ -750,7 +756,7 @@ def parse_func(f, interface, func):
         if returntype == "bool":
             g_NativeMethods.append("\t\t[return: MarshalAs(UnmanagedType.I1)]")
 
-        g_NativeMethods.append("\t\tpublic static extern {0} {1}({2});".format(returntype, strEntryPoint, pinvokeargs))
+        g_NativeMethods.append("\t\internal static extern {0} {1}({2});".format(returntype, strEntryPoint, pinvokeargs))
         g_NativeMethods.append("")
 
     functionBody = []
