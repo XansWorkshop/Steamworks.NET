@@ -152,7 +152,7 @@ def main(parser):
     constants = parse(parser)
     for constant in constants:
         for precomment in constant.precomments:
-            lines.append("//" + precomment)
+            lines.append("//" + precomment.replace("///", "//"))
         lines.append("public const " + constant.type + " " + constant.name + constant.spacing + "= " + constant.value + ";" + constant.comment)
 
     with open("../com.rlabrecque.steamworks.net/Runtime/autogen/SteamConstants.cs", "wb") as out:
@@ -188,7 +188,7 @@ def parse_defines(parser):
 
             comment = ""
             if d.c.linecomment:
-                comment = " //" + d.c.linecomment
+                comment = " //" + d.c.linecomment.replace("///", "//")
 
             definetype = "int"
             definevalue = d.value
@@ -218,7 +218,7 @@ def parse_constants(parser):
 
             comment = ""
             if constant.c.linecomment:
-                comment = " //" + constant.c.linecomment
+                comment = " //" + constant.c.linecomment.replace("///", "//")
 
             constanttype = constant.type
             for t in parser.typedefs:

@@ -4,6 +4,8 @@
 
 // This file has been modified by Xan's Workshop for integration into Godot.
 
+#nullable disable
+
 #if GODOT_WINDOWS
 #define STEAMWORKS_WIN
 #elif GODOT_LINUXBSD || GODOT_OSX

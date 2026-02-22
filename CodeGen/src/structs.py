@@ -134,7 +134,7 @@ def parse(struct):
     for comment in struct.c.rawprecomments:
         if type(comment) is steamworksparser.BlankLine:
             continue
-        lines.append("\t" + comment)
+        lines.append("\t" + comment.replace("///", "//"))
 
     structname = struct.name
 
@@ -176,7 +176,7 @@ def parse(struct):
             if type(comment) is steamworksparser.BlankLine:
                 lines.append("\t\t")
             else:
-                lines.append("\t" + comment)
+                lines.append("\t" + comment.replace("///", "//"))
 
     lines.append("\t}")
     lines.append("")
@@ -189,7 +189,7 @@ def parse_field(field, structname):
         if type(comment) is steamworksparser.BlankLine:
             lines.append("\t\t")
         else:
-            lines.append("\t" + comment)
+            lines.append("\t" + comment.replace("///", "//"))
 
     fieldtype = g_TypeConversionDict.get(field.type, field.type)
     fieldtype = g_SpecialFieldTypes.get(structname, dict()).get(field.name, fieldtype)
@@ -200,7 +200,7 @@ def parse_field(field, structname):
 
     comment = ""
     if field.c.rawlinecomment:
-        comment = field.c.rawlinecomment
+        comment = field.c.rawlinecomment.replace("///", "//")
 
     if field.arraysize:
         constantsstr = ""

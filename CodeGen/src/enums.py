@@ -66,7 +66,7 @@ def main(parser):
             for comment in enum.c.rawprecomments:
                 if type(comment) is steamworksparser.BlankLine:
                     continue
-                lines.append("\t" + comment)
+                lines.append("\t" + comment.replace("///", "//"))
 
             if enum.name in g_FlagEnums:
                 lines.append("\t[Flags]")
@@ -85,7 +85,7 @@ def main(parser):
                     if type(comment) is steamworksparser.BlankLine:
                         lines.append("")
                     else:
-                        lines.append("\t" + comment)
+                        lines.append("\t" + comment.replace("///", "//"))
                 line = "\t\t" + field.name
                 if field.value:
                     if "<<" in field.value and enum.name not in g_FlagEnums:
@@ -104,14 +104,14 @@ def main(parser):
 
                     line += value
                 if field.c.rawlinecomment:
-                    line += field.c.rawlinecomment
+                    line += field.c.rawlinecomment.replace("///", "//")
                 lines.append(line)
 
             for comment in enum.endcomments.rawprecomments:
                 if type(comment) is steamworksparser.BlankLine:
                     lines.append("")
                 else:
-                    lines.append("\t" + comment)
+                    lines.append("\t" + comment.replace("///", "//"))
 
             lines.append("\t}")
             lines.append("")

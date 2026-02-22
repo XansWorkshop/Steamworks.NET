@@ -4,6 +4,8 @@
 
 // This file has been modified by Xan's Workshop for integration into Godot.
 
+#nullable disable
+
 #if GODOT_WINDOWS
 #define STEAMWORKS_WIN
 #elif GODOT_LINUXBSD || GODOT_OSX
@@ -16,7 +18,6 @@
 
 #if !DISABLESTEAMWORKS
 
-using System.Runtime.InteropServices;
 #pragma warning disable IDE0130 // Namespace does not match folder structure
 #pragma warning disable CS1591 // Missing documentation
 
@@ -27,6 +28,7 @@ using System.Runtime.InteropServices;
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 #if ENABLE_IL2CPP
 using AOT;
 #else

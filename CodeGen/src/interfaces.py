@@ -847,12 +847,12 @@ def parse_func(f, interface, func):
 
     comments = func.comments
     if func.linecomment:
-        comments.append(func.linecomment)
+        comments.append(func.linecomment.replace("///", "//"))
 
     if comments:
         g_Output.append("\t\t/// <summary>")
         for c in comments:
-            c = c.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')#.replace('/*', '').replace('*/', '')
+            c = c.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace("///", "//")#.replace('/*', '').replace('*/', '')
             if c:
                 g_Output.append("\t\t/// <para>" + c + "</para>")
         g_Output.append("\t\t/// </summary>")
