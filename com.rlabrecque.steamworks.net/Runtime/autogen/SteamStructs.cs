@@ -20,12 +20,17 @@
 #if !DISABLESTEAMWORKS
 
 using System.Runtime.InteropServices;
+// Here because of a mistake. Shit fix.
+using intptr_t = nint;
 
 #pragma warning disable IDE0130 // Namespace does not match folder structure
 #pragma warning disable CS1591 // Missing documentation
 namespace Steamworks {
 	// friend game played information
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct FriendGameInfo_t {
 		public CGameID m_gameID;
 		public uint m_unGameIP;
@@ -35,6 +40,9 @@ namespace Steamworks {
 	}
 
 	[StructLayout(LayoutKind.Sequential, Pack = 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct InputAnalogActionData_t {
 		// Type of data coming from this action, this will match what got specified in the action set
 		public EInputSourceMode eMode;
@@ -47,6 +55,9 @@ namespace Steamworks {
 	}
 
 	[StructLayout(LayoutKind.Sequential, Pack = 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct InputDigitalActionData_t {
 		// The current state of this action; will be true if currently pressed
 		public byte bState;
@@ -56,6 +67,9 @@ namespace Steamworks {
 	}
 
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct InputMotionData_t {
 		// Gyro Quaternion:
 		// Absolute rotation of the controller since wakeup, using the Accelerometer reading at startup to determine the first value.
@@ -92,6 +106,9 @@ namespace Steamworks {
 	}
 
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamItemDetails_t {
 		public SteamItemInstanceID_t m_itemId;
 		public SteamItemDef_t m_iDefinition;
@@ -100,6 +117,9 @@ namespace Steamworks {
 	}
 
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamPartyBeaconLocation_t {
 		public ESteamPartyBeaconLocationType m_eType;
 		public ulong m_ulLocationID;
@@ -108,6 +128,9 @@ namespace Steamworks {
 	// connection state to a specified user, returned by GetP2PSessionState()
 	// this is under-the-hood info about what's going on with a SendP2PPacket(), shouldn't be needed except for debuggin
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct P2PSessionState_t {
 		public byte m_bConnectionActive;		// true if we've got an active open connection
 		public byte m_bConnecting;			// true if we're currently trying to establish a connection
@@ -121,6 +144,9 @@ namespace Steamworks {
 
 	// Mouse motion event data, valid when m_eType is k_ERemotePlayInputMouseMotion
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemotePlayInputMouseMotion_t {
 		[MarshalAs(UnmanagedType.I1)]
 		public bool m_bAbsolute;		// True if this is absolute mouse motion and m_flNormalizedX and m_flNormalizedY are valid
@@ -132,6 +158,9 @@ namespace Steamworks {
 
 	// Mouse wheel event data, valid when m_eType is k_ERemotePlayInputMouseWheel
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemotePlayInputMouseWheel_t {
 		public ERemotePlayMouseWheelDirection m_eDirection;
 		public float m_flAmount;		// 1.0f is a single click of the wheel, 120 units on Windows
@@ -139,6 +168,9 @@ namespace Steamworks {
 
 	// Key event data, valid when m_eType is k_ERemotePlayInputKeyDown or k_ERemotePlayInputKeyUp
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemotePlayInputKey_t {
 		public int m_eScancode;		// Keyboard scancode, common values are defined in ERemotePlayScancode
 		public uint m_unModifiers;	// Mask of ERemotePlayKeyModifier active for this key event
@@ -149,6 +181,9 @@ namespace Steamworks {
 	// Purpose: Structure that contains an array of const char * strings and the number of those strings
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamParamStringArray_t {
 		public nint m_ppStrings;
 		public int m_nNumStrings;
@@ -156,6 +191,9 @@ namespace Steamworks {
 
 	// Details for a single published file/UGC
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamUGCDetails_t {
 		public PublishedFileId_t m_nPublishedFileId;
 		public EResult m_eResult;												// The result of the operation.
@@ -224,6 +262,9 @@ namespace Steamworks {
 
 	// a single entry in a leaderboard, as returned by GetDownloadedLeaderboardEntry()
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct LeaderboardEntry_t {
 		public CSteamID m_steamIDUser; // user with the entry - use SteamFriends()->GetFriendPersonaName() & SteamFriends()->GetFriendAvatar() to get more info
 		public int m_nGlobalRank;	// [1..N], where N is the number of users with an entry in the leaderboard
@@ -238,6 +279,9 @@ namespace Steamworks {
 	/// understood as "filter operation code" and the "value" is the operand to this
 	/// filter operation.  The meaning of the operand depends upon the filter.
 	[StructLayout(LayoutKind.Sequential)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct MatchMakingKeyValuePair_t {
 		MatchMakingKeyValuePair_t(string strKey, string strValue) {
 			m_szKey = strKey;
@@ -254,6 +298,9 @@ namespace Steamworks {
 	// see callbacks documentation for more details
 	/// Internal structure used in manual callback dispatch
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct CallbackMsg_t {
 		public int m_hSteamUser; // Specific user to whom this callback applies.
 		public int m_iCallback; // Callback identifier.  (Corresponds to the k_iCallback enum in the callback structure.)
@@ -263,6 +310,9 @@ namespace Steamworks {
 
 	/// Describe the state of a connection.
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamNetConnectionInfo_t {
 		
 		/// Who is on the other end?  Depending on the connection type and phase of the connection, we might not know
@@ -331,6 +381,9 @@ namespace Steamworks {
 	/// Quick connection state, pared down to something you could call
 	/// more frequently without it being too big of a perf hit.
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamNetConnectionRealTimeStatus_t {
 		
 		/// High level state of the connection
@@ -409,6 +462,9 @@ namespace Steamworks {
 
 	/// Quick status of a particular lane
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamNetConnectionRealTimeLaneStatus_t {
 		// Counters for this particular lane.  See the corresponding variables
 		// in SteamNetConnectionRealTimeStatus_t
@@ -444,6 +500,9 @@ namespace Steamworks {
 	/// to do that, convert it to a string representation using the methods in
 	/// ISteamNetworkingUtils().
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamNetworkPingLocation_t {
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 512)]
 		public byte[] m_data;

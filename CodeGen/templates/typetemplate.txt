@@ -2,6 +2,9 @@
 #pragma warning disable CS1591 // Missing documentation
 
 namespace Steamworks {
+	// Here because of a mistake. Shit fix.
+	using intptr_t = nint;
+	
 	[System.Serializable]
 #if THE_CONSERVATORY
 	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]

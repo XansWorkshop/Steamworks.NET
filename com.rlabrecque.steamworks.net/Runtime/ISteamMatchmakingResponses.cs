@@ -208,7 +208,7 @@ namespace Steamworks {
 			public InternalRefreshComplete m_VTRefreshComplete;
 		}
 
-		public static explicit operator System.nint(ISteamMatchmakingServerListResponse that) {
+		public static explicit operator nint(ISteamMatchmakingServerListResponse that) {
 			return that.m_pGCHandle.AddrOfPinnedObject();
 		}
 	};
@@ -316,7 +316,7 @@ namespace Steamworks {
 			public InternalServerFailedToRespond m_VTServerFailedToRespond;
 		}
 
-		public static explicit operator System.nint(ISteamMatchmakingPingResponse that) {
+		public static explicit operator nint(ISteamMatchmakingPingResponse that) {
 			return that.m_pGCHandle.AddrOfPinnedObject();
 		}
 	};
@@ -450,7 +450,7 @@ namespace Steamworks {
 			public InternalPlayersRefreshComplete m_VTPlayersRefreshComplete;
 		}
 
-		public static explicit operator System.nint(ISteamMatchmakingPlayersResponse that) {
+		public static explicit operator nint(ISteamMatchmakingPlayersResponse that) {
 			return that.m_pGCHandle.AddrOfPinnedObject();
 		}
 	};
@@ -584,7 +584,7 @@ namespace Steamworks {
 			public InternalRulesRefreshComplete m_VTRulesRefreshComplete;
 		}
 
-		public static explicit operator System.nint(ISteamMatchmakingRulesResponse that) {
+		public static explicit operator nint(ISteamMatchmakingRulesResponse that) {
 			return that.m_pGCHandle.AddrOfPinnedObject();
 		}
 	};

@@ -211,8 +211,8 @@ namespace Steamworks {
 			for (int i = 0; i < filters.Length; ++i) {
 				Marshal.StructureToPtr(filters[i], new nint(m_pArrayEntries.ToInt64() + (i * sizeOfMMKVP)), false);
 			}
-
-			Marshal.Writenint(m_pNativeArray, m_pArrayEntries);
+			
+			Marshal.WriteIntPtr(m_pNativeArray, m_pArrayEntries);
 		}
 
 		~MMKVPMarshaller() {

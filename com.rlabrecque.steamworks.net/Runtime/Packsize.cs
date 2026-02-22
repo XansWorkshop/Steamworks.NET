@@ -16,7 +16,6 @@
 
 #if !DISABLESTEAMWORKS
 
-using System.Runtime.InteropServices;
 #pragma warning disable IDE0130 // Namespace does not match folder structure
 #pragma warning disable CS1591 // Missing documentation
 
@@ -43,6 +42,7 @@ using System.Runtime.InteropServices;
 #warning You need to define STEAMWORKS_WIN, or STEAMWORKS_LIN_OSX. Refer to the readme for more details.
 #endif
 
+using System.Runtime.InteropServices;
 namespace Steamworks {
 #if THE_CONSERVATORY
 	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]

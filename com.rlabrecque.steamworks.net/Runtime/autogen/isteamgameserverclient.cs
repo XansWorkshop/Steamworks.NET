@@ -20,6 +20,8 @@
 #if !DISABLESTEAMWORKS
 
 using System.Runtime.InteropServices;
+// Here because of a mistake. Shit fix.
+using intptr_t = nint;
 
 #pragma warning disable IDE0130 // Namespace does not match folder structure
 #pragma warning disable CS1591 // Missing documentation

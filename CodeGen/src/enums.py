@@ -73,9 +73,10 @@ def main(parser):
 
             ########################################################################################
             # Added by Xan
-            lines.append("#if THE_CONSERVATORY")
-            lines.append("\t[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]")
-            lines.append("#endif")
+            #lines.append("#if THE_CONSERVATORY")
+            #lines.append("\t[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]")
+            #lines.append("#endif")
+            # ... But not useful; enums can't be patched.
             ########################################################################################
             lines.append("\tpublic enum " + enum.name + " : int {")
 

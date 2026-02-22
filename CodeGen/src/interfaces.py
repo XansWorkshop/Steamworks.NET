@@ -756,7 +756,7 @@ def parse_func(f, interface, func):
         if returntype == "bool":
             g_NativeMethods.append("\t\t[return: MarshalAs(UnmanagedType.I1)]")
 
-        g_NativeMethods.append("\t\internal static extern {0} {1}({2});".format(returntype, strEntryPoint, pinvokeargs))
+        g_NativeMethods.append("\t\tinternal static extern {0} {1}({2});".format(returntype, strEntryPoint, pinvokeargs))
         g_NativeMethods.append("")
 
     functionBody = []

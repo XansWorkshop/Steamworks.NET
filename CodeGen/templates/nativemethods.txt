@@ -45,6 +45,9 @@
 using System.Runtime.InteropServices;
 
 namespace Steamworks {
+	// Here because of a mistake. Shit fix.
+	using intptr_t = nint;
+
 	[System.Security.SuppressUnmanagedCodeSecurity]
 	internal static class NativeMethods {
 #if STEAMWORKS_WIN && STEAMWORKS_X64

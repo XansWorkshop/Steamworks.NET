@@ -17,10 +17,13 @@ g_TypeDict = {
     "uint16": "ushort",
 
     "uint32": "int",
+    #"uint32" : "uint",
     "unsigned int": "int",
+    #"unsigned int" : "uint",
 
     "uint64": "ulong",
     "size_t": "int",
+    #"size_t" : "nint"
 }
 
 g_SkippedDefines = (
@@ -159,9 +162,9 @@ def main(parser):
 
         ########################################################################################
         # Added by Xan
-        out.write("#if THE_CONSERVATORY\n", "utf-8")
-        out.write("\t[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]\n", "utf-8")
-        out.write("#endif\n", "utf-8")
+        out.write(bytes("#if THE_CONSERVATORY\n", "utf-8"))
+        out.write(bytes("\t[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]\n", "utf-8"))
+        out.write(bytes("#endif\n", "utf-8"))
         ########################################################################################
         out.write(bytes("\tpublic static class Constants {\n", "utf-8"))
         for line in lines:

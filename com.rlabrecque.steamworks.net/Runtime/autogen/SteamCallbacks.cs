@@ -20,6 +20,8 @@
 #if !DISABLESTEAMWORKS
 
 using System.Runtime.InteropServices;
+// Here because of a mistake. Shit fix.
+using intptr_t = nint;
 
 #pragma warning disable IDE0130 // Namespace does not match folder structure
 #pragma warning disable CS1591 // Missing documentation
@@ -30,6 +32,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamAppsCallbacks + 5)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct DlcInstalled_t {
 		public const int k_iCallback = Constants.k_iSteamAppsCallbacks + 5;
 		public AppId_t m_nAppID;		// AppID of the DLC
@@ -43,6 +48,9 @@ namespace Steamworks {
 	//---------------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamAppsCallbacks + 14)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct NewUrlLaunchParameters_t {
 		public const int k_iCallback = Constants.k_iSteamAppsCallbacks + 14;
 	}
@@ -53,6 +61,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamAppsCallbacks + 21)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct AppProofOfPurchaseKeyResponse_t {
 		public const int k_iCallback = Constants.k_iSteamAppsCallbacks + 21;
 		public EResult m_eResult;
@@ -72,6 +83,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamAppsCallbacks + 23)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct FileDetailsResult_t {
 		public const int k_iCallback = Constants.k_iSteamAppsCallbacks + 23;
 		public EResult m_eResult;
@@ -86,6 +100,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamAppsCallbacks + 30)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct TimedTrialStatus_t {
 		public const int k_iCallback = Constants.k_iSteamAppsCallbacks + 30;
 		public AppId_t m_unAppID;			// appID
@@ -101,6 +118,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 4)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct PersonaStateChange_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 4;
 		
@@ -114,6 +134,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 31)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GameOverlayActivated_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 31;
 		public byte m_bActive;		// true if it's just been activated, false otherwise
@@ -129,6 +152,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 32)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GameServerChangeRequested_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 32;
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 64)]
@@ -153,6 +179,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 33)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GameLobbyJoinRequested_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 33;
 		public CSteamID m_steamIDLobby;
@@ -167,6 +196,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 34)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct AvatarImageLoaded_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 34;
 		public CSteamID m_steamID; // steamid the avatar has been loaded for
@@ -180,6 +212,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 35)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct ClanOfficerListResponse_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 35;
 		public CSteamID m_steamIDClan;
@@ -192,6 +227,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 36)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct FriendRichPresenceUpdate_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 36;
 		public CSteamID m_steamIDFriend;	// friend who's rich presence has changed
@@ -204,6 +242,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 37)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GameRichPresenceJoinRequested_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 37;
 		public CSteamID m_steamIDFriend;		// the friend they did the join via (will be invalid if not directly via a friend)
@@ -221,6 +262,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 38)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GameConnectedClanChatMsg_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 38;
 		public CSteamID m_steamIDClanChat;
@@ -233,6 +277,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 39)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GameConnectedChatJoin_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 39;
 		public CSteamID m_steamIDClanChat;
@@ -244,6 +291,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = 1)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 40)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GameConnectedChatLeave_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 40;
 		public CSteamID m_steamIDClanChat;
@@ -259,6 +309,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 41)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct DownloadClanActivityCountsResult_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 41;
 		[MarshalAs(UnmanagedType.I1)]
@@ -270,6 +323,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 42)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct JoinClanChatRoomCompletionResult_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 42;
 		public CSteamID m_steamIDClanChat;
@@ -281,6 +337,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 43)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GameConnectedFriendChatMsg_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 43;
 		public CSteamID m_steamIDUser;
@@ -289,6 +348,9 @@ namespace Steamworks {
 
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 44)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct FriendsGetFollowerCount_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 44;
 		public EResult m_eResult;
@@ -298,6 +360,9 @@ namespace Steamworks {
 
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 45)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct FriendsIsFollowing_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 45;
 		public EResult m_eResult;
@@ -308,6 +373,9 @@ namespace Steamworks {
 
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 46)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct FriendsEnumerateFollowingList_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 46;
 		public EResult m_eResult;
@@ -322,6 +390,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 48)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct UnreadChatMessagesChanged_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 48;
 	}
@@ -331,6 +402,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 49)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct OverlayBrowserProtocolNavigation_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 49;
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 1024)]
@@ -347,6 +421,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 50)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct EquippedProfileItemsChanged_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 50;
 		public CSteamID m_steamID;
@@ -357,6 +434,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamFriendsCallbacks + 51)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct EquippedProfileItems_t {
 		public const int k_iCallback = Constants.k_iSteamFriendsCallbacks + 51;
 		public EResult m_eResult;
@@ -379,6 +459,9 @@ namespace Steamworks {
 	// callback notification - A new message is available for reading from the message queue
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamGameCoordinatorCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GCMessageAvailable_t {
 		public const int k_iCallback = Constants.k_iSteamGameCoordinatorCallbacks + 1;
 		public uint m_nMessageSize;
@@ -387,6 +470,9 @@ namespace Steamworks {
 	// callback notification - A message failed to make it to the GC. It may be down temporarily
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamGameCoordinatorCallbacks + 2)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GCMessageFailed_t {
 		public const int k_iCallback = Constants.k_iSteamGameCoordinatorCallbacks + 2;
 	}
@@ -395,6 +481,9 @@ namespace Steamworks {
 	// client has been approved to connect to this game server
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamGameServerCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GSClientApprove_t {
 		public const int k_iCallback = Constants.k_iSteamGameServerCallbacks + 1;
 		public CSteamID m_SteamID;			// SteamID of approved player
@@ -404,6 +493,9 @@ namespace Steamworks {
 	// client has been denied to connection to this game server
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamGameServerCallbacks + 2)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GSClientDeny_t {
 		public const int k_iCallback = Constants.k_iSteamGameServerCallbacks + 2;
 		public CSteamID m_SteamID;
@@ -420,6 +512,9 @@ namespace Steamworks {
 	// request the game server should kick the user
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamGameServerCallbacks + 3)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GSClientKick_t {
 		public const int k_iCallback = Constants.k_iSteamGameServerCallbacks + 3;
 		public CSteamID m_SteamID;
@@ -431,6 +526,9 @@ namespace Steamworks {
 	// client achievement info
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamGameServerCallbacks + 6)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GSClientAchievementStatus_t {
 		public const int k_iCallback = Constants.k_iSteamGameServerCallbacks + 6;
 		public ulong m_SteamID;
@@ -449,6 +547,9 @@ namespace Steamworks {
 	// m_bSecure is true if the game server should display itself as secure to users, false otherwise
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 15)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GSPolicyResponse_t {
 		public const int k_iCallback = Constants.k_iSteamUserCallbacks + 15;
 		public byte m_bSecure;
@@ -457,6 +558,9 @@ namespace Steamworks {
 	// GS gameplay stats info
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamGameServerCallbacks + 7)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GSGameplayStats_t {
 		public const int k_iCallback = Constants.k_iSteamGameServerCallbacks + 7;
 		public EResult m_eResult;					// Result of the call
@@ -468,6 +572,9 @@ namespace Steamworks {
 	// send as a reply to RequestUserGroupStatus()
 	[StructLayout(LayoutKind.Sequential, Pack = 1)]
 	[CallbackIdentity(Constants.k_iSteamGameServerCallbacks + 8)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GSClientGroupStatus_t {
 		public const int k_iCallback = Constants.k_iSteamGameServerCallbacks + 8;
 		public CSteamID m_SteamIDUser;
@@ -481,6 +588,9 @@ namespace Steamworks {
 	// Sent as a reply to GetServerReputation()
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamGameServerCallbacks + 9)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GSReputation_t {
 		public const int k_iCallback = Constants.k_iSteamGameServerCallbacks + 9;
 		public EResult m_eResult;				// Result of the call;
@@ -503,6 +613,9 @@ namespace Steamworks {
 	// Sent as a reply to AssociateWithClan()
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamGameServerCallbacks + 10)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct AssociateWithClanResult_t {
 		public const int k_iCallback = Constants.k_iSteamGameServerCallbacks + 10;
 		public EResult m_eResult;				// Result of the call;
@@ -511,6 +624,9 @@ namespace Steamworks {
 	// Sent as a reply to ComputeNewPlayerCompatibility()
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamGameServerCallbacks + 11)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct ComputeNewPlayerCompatibilityResult_t {
 		public const int k_iCallback = Constants.k_iSteamGameServerCallbacks + 11;
 		public EResult m_eResult;				// Result of the call;
@@ -527,6 +643,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamGameServerStatsCallbacks)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GSStatsReceived_t {
 		public const int k_iCallback = Constants.k_iSteamGameServerStatsCallbacks;
 		public EResult m_eResult;		// Success / error fetching the stats
@@ -538,6 +657,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamGameServerStatsCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GSStatsStored_t {
 		public const int k_iCallback = Constants.k_iSteamGameServerStatsCallbacks + 1;
 		public EResult m_eResult;		// success / error
@@ -550,6 +672,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 8)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GSStatsUnloaded_t {
 		public const int k_iCallback = Constants.k_iSteamUserStatsCallbacks + 8;
 		public CSteamID m_steamIDUser;	// User whose stats have been unloaded
@@ -561,6 +686,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_BrowserReady_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 1;
 		public HHTMLBrowser unBrowserHandle; // this browser is now fully created and ready to navigate to pages
@@ -571,6 +699,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 2)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_NeedsPaint_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 2;
 		public HHTMLBrowser unBrowserHandle; // the browser that needs the paint
@@ -593,6 +724,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 3)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_StartRequest_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 3;
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface navigating
@@ -608,6 +742,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 4)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_CloseBrowser_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 4;
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface
@@ -618,6 +755,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 5)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_URLChanged_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 5;
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface navigating
@@ -635,6 +775,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 6)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_FinishedRequest_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 6;
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface
@@ -647,6 +790,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 7)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_OpenLinkInNewTab_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 7;
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface
@@ -658,6 +804,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 8)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_ChangedTitle_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 8;
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface
@@ -669,6 +818,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 9)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_SearchResults_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 9;
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface
@@ -681,6 +833,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 10)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_CanGoBackAndForward_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 10;
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface
@@ -695,6 +850,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 11)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_HorizontalScroll_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 11;
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface
@@ -711,6 +869,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 12)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_VerticalScroll_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 12;
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface
@@ -727,6 +888,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 13)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_LinkAtPosition_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 13;
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface
@@ -745,6 +909,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 14)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_JSAlert_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 14;
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface
@@ -757,6 +924,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 15)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_JSConfirm_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 15;
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface
@@ -769,6 +939,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 16)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_FileOpenDialog_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 16;
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface
@@ -787,6 +960,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 21)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_NewWindow_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 21;
 		public HHTMLBrowser unBrowserHandle; // the handle of the current surface
@@ -803,6 +979,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 22)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_SetCursor_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 22;
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface
@@ -814,6 +993,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 23)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_StatusText_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 23;
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface
@@ -825,6 +1007,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 24)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_ShowToolTip_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 24;
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface
@@ -836,6 +1021,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 25)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_UpdateToolTip_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 25;
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface
@@ -847,6 +1035,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 26)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_HideToolTip_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 26;
 		public HHTMLBrowser unBrowserHandle; // the handle of the surface
@@ -857,6 +1048,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTMLSurfaceCallbacks + 27)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTML_BrowserRestarted_t {
 		public const int k_iCallback = Constants.k_iSteamHTMLSurfaceCallbacks + 27;
 		public HHTMLBrowser unBrowserHandle; // this is the new browser handle after the restart
@@ -866,6 +1060,9 @@ namespace Steamworks {
 	// callbacks
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTTPCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTTPRequestCompleted_t {
 		public const int k_iCallback = Constants.k_iSteamHTTPCallbacks + 1;
 		
@@ -890,6 +1087,9 @@ namespace Steamworks {
 
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTTPCallbacks + 2)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTTPRequestHeadersReceived_t {
 		public const int k_iCallback = Constants.k_iSteamHTTPCallbacks + 2;
 		
@@ -903,6 +1103,9 @@ namespace Steamworks {
 
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamHTTPCallbacks + 3)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct HTTPRequestDataReceived_t {
 		public const int k_iCallback = Constants.k_iSteamHTTPCallbacks + 3;
 		
@@ -927,6 +1130,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamControllerCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamInputDeviceConnected_t {
 		public const int k_iCallback = Constants.k_iSteamControllerCallbacks + 1;
 		public InputHandle_t m_ulConnectedDeviceHandle;	// Handle for device
@@ -938,6 +1144,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamControllerCallbacks + 2)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamInputDeviceDisconnected_t {
 		public const int k_iCallback = Constants.k_iSteamControllerCallbacks + 2;
 		public InputHandle_t m_ulDisconnectedDeviceHandle;	// Handle for device
@@ -949,6 +1158,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamControllerCallbacks + 3)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamInputConfigurationLoaded_t {
 		public const int k_iCallback = Constants.k_iSteamControllerCallbacks + 3;
 		public AppId_t m_unAppID;
@@ -970,6 +1182,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamControllerCallbacks + 4)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamInputGamepadSlotChange_t {
 		public const int k_iCallback = Constants.k_iSteamControllerCallbacks + 4;
 		public AppId_t m_unAppID;
@@ -984,6 +1199,9 @@ namespace Steamworks {
 	// always be exactly one callback per handle.
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamInventoryCallbacks + 0)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamInventoryResultReady_t {
 		public const int k_iCallback = Constants.k_iSteamInventoryCallbacks + 0;
 		public SteamInventoryResult_t m_handle;
@@ -999,6 +1217,9 @@ namespace Steamworks {
 	// afterwards; this is an additional notification for your convenience.
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamInventoryCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamInventoryFullUpdate_t {
 		public const int k_iCallback = Constants.k_iSteamInventoryCallbacks + 1;
 		public SteamInventoryResult_t m_handle;
@@ -1010,6 +1231,9 @@ namespace Steamworks {
 	// a definition update in order to process results from the server.
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamInventoryCallbacks + 2)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamInventoryDefinitionUpdate_t {
 		public const int k_iCallback = Constants.k_iSteamInventoryCallbacks + 2;
 	}
@@ -1017,6 +1241,9 @@ namespace Steamworks {
 	// Returned
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamInventoryCallbacks + 3)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamInventoryEligiblePromoItemDefIDs_t {
 		public const int k_iCallback = Constants.k_iSteamInventoryCallbacks + 3;
 		public EResult m_result;
@@ -1029,6 +1256,9 @@ namespace Steamworks {
 	// Triggered from StartPurchase call
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamInventoryCallbacks + 4)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamInventoryStartPurchaseResult_t {
 		public const int k_iCallback = Constants.k_iSteamInventoryCallbacks + 4;
 		public EResult m_result;
@@ -1039,6 +1269,9 @@ namespace Steamworks {
 	// Triggered from RequestPrices
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamInventoryCallbacks + 5)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamInventoryRequestPricesResult_t {
 		public const int k_iCallback = Constants.k_iSteamInventoryCallbacks + 5;
 		public EResult m_result;
@@ -1058,6 +1291,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 2)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct FavoritesListChanged_t {
 		public const int k_iCallback = Constants.k_iSteamMatchmakingCallbacks + 2;
 		public uint m_nIP; // an IP of 0 means reload the whole list, any other value means just one server
@@ -1080,6 +1316,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 3)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct LobbyInvite_t {
 		public const int k_iCallback = Constants.k_iSteamMatchmakingCallbacks + 3;
 		
@@ -1095,6 +1334,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 4)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct LobbyEnter_t {
 		public const int k_iCallback = Constants.k_iSteamMatchmakingCallbacks + 4;
 		
@@ -1112,6 +1354,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 5)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct LobbyDataUpdate_t {
 		public const int k_iCallback = Constants.k_iSteamMatchmakingCallbacks + 5;
 		
@@ -1127,6 +1372,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 6)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct LobbyChatUpdate_t {
 		public const int k_iCallback = Constants.k_iSteamMatchmakingCallbacks + 6;
 		
@@ -1143,6 +1391,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 7)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct LobbyChatMsg_t {
 		public const int k_iCallback = Constants.k_iSteamMatchmakingCallbacks + 7;
 		
@@ -1160,6 +1411,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 9)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct LobbyGameCreated_t {
 		public const int k_iCallback = Constants.k_iSteamMatchmakingCallbacks + 9;
 		
@@ -1175,6 +1429,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 10)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct LobbyMatchList_t {
 		public const int k_iCallback = Constants.k_iSteamMatchmakingCallbacks + 10;
 		public uint m_nLobbiesMatching;		// Number of lobbies that matched search criteria and we have SteamIDs for
@@ -1186,6 +1443,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 12)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct LobbyKicked_t {
 		public const int k_iCallback = Constants.k_iSteamMatchmakingCallbacks + 12;
 		public ulong m_ulSteamIDLobby;			// Lobby
@@ -1201,6 +1461,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 13)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct LobbyCreated_t {
 		public const int k_iCallback = Constants.k_iSteamMatchmakingCallbacks + 13;
 		
@@ -1226,6 +1489,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMatchmakingCallbacks + 16)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct FavoritesListAccountsUpdated_t {
 		public const int k_iCallback = Constants.k_iSteamMatchmakingCallbacks + 16;
 		
@@ -1237,6 +1503,9 @@ namespace Steamworks {
 	// to the game with that party.
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamPartiesCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct JoinPartyCallback_t {
 		public const int k_iCallback = Constants.k_iSteamPartiesCallbacks + 1;
 		
@@ -1255,6 +1524,9 @@ namespace Steamworks {
 	// Response to CreateBeacon request. If successful, the beacon ID is provided.
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamPartiesCallbacks + 2)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct CreateBeaconCallback_t {
 		public const int k_iCallback = Constants.k_iSteamPartiesCallbacks + 2;
 		
@@ -1268,6 +1540,9 @@ namespace Steamworks {
 	// Otherwise, Steam may timeout their reservation eventually.
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamPartiesCallbacks + 3)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct ReservationNotificationCallback_t {
 		public const int k_iCallback = Constants.k_iSteamPartiesCallbacks + 3;
 		
@@ -1278,6 +1553,9 @@ namespace Steamworks {
 	// Response to ChangeNumOpenSlots call
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamPartiesCallbacks + 4)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct ChangeNumOpenSlotsCallback_t {
 		public const int k_iCallback = Constants.k_iSteamPartiesCallbacks + 4;
 		
@@ -1287,6 +1565,9 @@ namespace Steamworks {
 	// The list of possible Party beacon locations has changed
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamPartiesCallbacks + 5)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct AvailableBeaconLocationsUpdated_t {
 		public const int k_iCallback = Constants.k_iSteamPartiesCallbacks + 5;
 	}
@@ -1294,6 +1575,9 @@ namespace Steamworks {
 	// The list of active beacons may have changed
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamPartiesCallbacks + 6)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct ActiveBeaconsUpdated_t {
 		public const int k_iCallback = Constants.k_iSteamPartiesCallbacks + 6;
 	}
@@ -1301,12 +1585,18 @@ namespace Steamworks {
 	// callbacks
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamMusicCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct PlaybackStatusHasChanged_t {
 		public const int k_iCallback = Constants.k_iSteamMusicCallbacks + 1;
 	}
 
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamMusicCallbacks + 2)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct VolumeHasChanged_t {
 		public const int k_iCallback = Constants.k_iSteamMusicCallbacks + 2;
 		public float m_flNewVolume;
@@ -1317,6 +1607,9 @@ namespace Steamworks {
 	// in response, a call to AcceptP2PPacketsFromUser() needs to be made, if you want to talk with them
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamNetworkingCallbacks + 2)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct P2PSessionRequest_t {
 		public const int k_iCallback = Constants.k_iSteamNetworkingCallbacks + 2;
 		public CSteamID m_steamIDRemote;			// user who wants to talk to us
@@ -1327,6 +1620,9 @@ namespace Steamworks {
 	// further attempts to send will retry making the connection (but will be dropped if we fail again)
 	[StructLayout(LayoutKind.Sequential, Pack = 1)]
 	[CallbackIdentity(Constants.k_iSteamNetworkingCallbacks + 3)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct P2PSessionConnectFail_t {
 		public const int k_iCallback = Constants.k_iSteamNetworkingCallbacks + 3;
 		public CSteamID m_steamIDRemote;			// user we were sending packets to
@@ -1337,6 +1633,9 @@ namespace Steamworks {
 	// used as part of the CreateListenSocket() / CreateP2PConnectionSocket()
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamNetworkingCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SocketStatusCallback_t {
 		public const int k_iCallback = Constants.k_iSteamNetworkingCallbacks + 1;
 		public SNetSocket_t m_hSocket;				// the socket used to send/receive data to the remote host
@@ -1351,6 +1650,9 @@ namespace Steamworks {
 	/// Posted when a remote host is sending us a message, and we do not already have a session with them
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamNetworkingMessagesCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamNetworkingMessagesSessionRequest_t {
 		public const int k_iCallback = Constants.k_iSteamNetworkingMessagesCallbacks + 1;
 		public SteamNetworkingIdentity m_identityRemote;			// user who wants to talk to us
@@ -1369,6 +1671,9 @@ namespace Steamworks {
 	/// none, connecting, and findingroute again.
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamNetworkingMessagesCallbacks + 2)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamNetworkingMessagesSessionFailed_t {
 		public const int k_iCallback = Constants.k_iSteamNetworkingMessagesCallbacks + 2;
 		
@@ -1416,6 +1721,9 @@ namespace Steamworks {
 	/// Also note that callbacks will be posted when connections are created and destroyed by your own API calls.
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamNetworkingSocketsCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamNetConnectionStatusChangedCallback_t {
 		public const int k_iCallback = Constants.k_iSteamNetworkingSocketsCallbacks + 1;
 		
@@ -1439,6 +1747,9 @@ namespace Steamworks {
 	/// This callback is posted whenever the state of our readiness changes.
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamNetworkingSocketsCallbacks + 2)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamNetAuthenticationStatus_t {
 		public const int k_iCallback = Constants.k_iSteamNetworkingSocketsCallbacks + 2;
 		
@@ -1460,6 +1771,9 @@ namespace Steamworks {
 	/// To do this we first need to fetch the network configuration,
 	/// which describes what POPs are available.
 	[CallbackIdentity(Constants.k_iSteamNetworkingUtilsCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamRelayNetworkStatus_t {
 		public const int k_iCallback = Constants.k_iSteamNetworkingUtilsCallbacks + 1;
 		
@@ -1501,6 +1815,9 @@ namespace Steamworks {
 	// Purpose: Callback for querying UGC
 	//-----------------------------------------------------------------------------
 	[CallbackIdentity(Constants.k_ISteamParentalSettingsCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamParentalSettingsChanged_t {
 		public const int k_iCallback = Constants.k_ISteamParentalSettingsCallbacks + 1;
 	}
@@ -1508,6 +1825,9 @@ namespace Steamworks {
 	// callbacks
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemotePlayCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamRemotePlaySessionConnected_t {
 		public const int k_iCallback = Constants.k_iSteamRemotePlayCallbacks + 1;
 		public RemotePlaySessionID_t m_unSessionID;
@@ -1515,6 +1835,9 @@ namespace Steamworks {
 
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemotePlayCallbacks + 2)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamRemotePlaySessionDisconnected_t {
 		public const int k_iCallback = Constants.k_iSteamRemotePlayCallbacks + 2;
 		public RemotePlaySessionID_t m_unSessionID;
@@ -1522,6 +1845,9 @@ namespace Steamworks {
 
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemotePlayCallbacks + 3)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamRemotePlayTogetherGuestInvite_t {
 		public const int k_iCallback = Constants.k_iSteamRemotePlayCallbacks + 3;
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 1024)]
@@ -1539,6 +1865,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 7)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStorageFileShareResult_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 7;
 		public EResult m_eResult;			// The result of the operation
@@ -1558,6 +1887,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 9)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStoragePublishFileResult_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 9;
 		public EResult m_eResult;				// The result of the operation.
@@ -1572,6 +1904,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 11)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStorageDeletePublishedFileResult_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 11;
 		public EResult m_eResult;				// The result of the operation.
@@ -1583,6 +1918,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 12)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStorageEnumerateUserPublishedFilesResult_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 12;
 		public EResult m_eResult;				// The result of the operation.
@@ -1597,6 +1935,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 13)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStorageSubscribePublishedFileResult_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 13;
 		public EResult m_eResult;				// The result of the operation.
@@ -1608,6 +1949,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 14)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStorageEnumerateUserSubscribedFilesResult_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 14;
 		public EResult m_eResult;				// The result of the operation.
@@ -1624,6 +1968,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 15)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStorageUnsubscribePublishedFileResult_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 15;
 		public EResult m_eResult;				// The result of the operation.
@@ -1635,6 +1982,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 16)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStorageUpdatePublishedFileResult_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 16;
 		public EResult m_eResult;				// The result of the operation.
@@ -1648,6 +1998,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 17)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStorageDownloadUGCResult_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 17;
 		public EResult m_eResult;				// The result of the operation.
@@ -1669,6 +2022,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 18)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStorageGetPublishedFileDetailsResult_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 18;
 		public EResult m_eResult;				// The result of the operation.
@@ -1729,6 +2085,9 @@ namespace Steamworks {
 
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 19)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStorageEnumerateWorkshopFilesResult_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 19;
 		public EResult m_eResult;
@@ -1747,6 +2106,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 20)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStorageGetPublishedItemVoteDetailsResult_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 20;
 		public EResult m_eResult;
@@ -1762,6 +2124,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 21)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStoragePublishedFileSubscribed_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 21;
 		public PublishedFileId_t m_nPublishedFileId;	// The published file id
@@ -1773,6 +2138,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 22)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStoragePublishedFileUnsubscribed_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 22;
 		public PublishedFileId_t m_nPublishedFileId;	// The published file id
@@ -1784,6 +2152,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 23)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStoragePublishedFileDeleted_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 23;
 		public PublishedFileId_t m_nPublishedFileId;	// The published file id
@@ -1795,6 +2166,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 24)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStorageUpdateUserPublishedItemVoteResult_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 24;
 		public EResult m_eResult;				// The result of the operation.
@@ -1806,6 +2180,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 25)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStorageUserVoteDetails_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 25;
 		public EResult m_eResult;				// The result of the operation.
@@ -1815,6 +2192,9 @@ namespace Steamworks {
 
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 26)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStorageEnumerateUserSharedWorkshopFilesResult_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 26;
 		public EResult m_eResult;				// The result of the operation.
@@ -1826,6 +2206,9 @@ namespace Steamworks {
 
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 27)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStorageSetUserPublishedFileActionResult_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 27;
 		public EResult m_eResult;				// The result of the operation.
@@ -1835,6 +2218,9 @@ namespace Steamworks {
 
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 28)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStorageEnumeratePublishedFilesByUserActionResult_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 28;
 		public EResult m_eResult;				// The result of the operation.
@@ -1852,6 +2238,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 29)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStoragePublishFileProgress_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 29;
 		public double m_dPercentFile;
@@ -1864,6 +2253,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 30)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStoragePublishedFileUpdated_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 30;
 		public PublishedFileId_t m_nPublishedFileId;	// The published file id
@@ -1876,6 +2268,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 31)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStorageFileWriteAsyncComplete_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 31;
 		public EResult m_eResult;						// result
@@ -1886,6 +2281,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 32)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStorageFileReadAsyncComplete_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 32;
 		public SteamAPICall_t m_hFileReadAsync;		// call handle of the async read which was made
@@ -1901,6 +2299,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamRemoteStorageCallbacks + 33)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoteStorageLocalFileChange_t {
 		public const int k_iCallback = Constants.k_iSteamRemoteStorageCallbacks + 33;
 	}
@@ -1912,6 +2313,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamScreenshotsCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct ScreenshotReady_t {
 		public const int k_iCallback = Constants.k_iSteamScreenshotsCallbacks + 1;
 		public ScreenshotHandle m_hLocal;
@@ -1925,6 +2329,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamScreenshotsCallbacks + 2)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct ScreenshotRequested_t {
 		public const int k_iCallback = Constants.k_iSteamScreenshotsCallbacks + 2;
 	}
@@ -1934,6 +2341,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamTimelineCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamTimelineGamePhaseRecordingExists_t {
 		public const int k_iCallback = Constants.k_iSteamTimelineCallbacks + 1;
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = Constants.k_cchMaxPhaseIDLength)]
@@ -1954,6 +2364,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamTimelineCallbacks + 2)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamTimelineEventRecordingExists_t {
 		public const int k_iCallback = Constants.k_iSteamTimelineCallbacks + 2;
 		public ulong m_ulEventID;
@@ -1966,6 +2379,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUGCCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamUGCQueryCompleted_t {
 		public const int k_iCallback = Constants.k_iSteamUGCCallbacks + 1;
 		public UGCQueryHandle_t m_handle;
@@ -1988,6 +2404,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUGCCallbacks + 2)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamUGCRequestUGCDetailsResult_t {
 		public const int k_iCallback = Constants.k_iSteamUGCCallbacks + 2;
 		public SteamUGCDetails_t m_details;
@@ -2000,6 +2419,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUGCCallbacks + 3)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct CreateItemResult_t {
 		public const int k_iCallback = Constants.k_iSteamUGCCallbacks + 3;
 		public EResult m_eResult;
@@ -2013,6 +2435,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUGCCallbacks + 4)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SubmitItemUpdateResult_t {
 		public const int k_iCallback = Constants.k_iSteamUGCCallbacks + 4;
 		public EResult m_eResult;
@@ -2026,6 +2451,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUGCCallbacks + 5)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct ItemInstalled_t {
 		public const int k_iCallback = Constants.k_iSteamUGCCallbacks + 5;
 		public AppId_t m_unAppID;
@@ -2039,6 +2467,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUGCCallbacks + 6)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct DownloadItemResult_t {
 		public const int k_iCallback = Constants.k_iSteamUGCCallbacks + 6;
 		public AppId_t m_unAppID;
@@ -2051,6 +2482,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUGCCallbacks + 7)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct UserFavoriteItemsListChanged_t {
 		public const int k_iCallback = Constants.k_iSteamUGCCallbacks + 7;
 		public PublishedFileId_t m_nPublishedFileId;
@@ -2064,6 +2498,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUGCCallbacks + 8)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SetUserItemVoteResult_t {
 		public const int k_iCallback = Constants.k_iSteamUGCCallbacks + 8;
 		public PublishedFileId_t m_nPublishedFileId;
@@ -2077,6 +2514,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUGCCallbacks + 9)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GetUserItemVoteResult_t {
 		public const int k_iCallback = Constants.k_iSteamUGCCallbacks + 9;
 		public PublishedFileId_t m_nPublishedFileId;
@@ -2094,6 +2534,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUGCCallbacks + 10)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct StartPlaytimeTrackingResult_t {
 		public const int k_iCallback = Constants.k_iSteamUGCCallbacks + 10;
 		public EResult m_eResult;
@@ -2104,6 +2547,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUGCCallbacks + 11)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct StopPlaytimeTrackingResult_t {
 		public const int k_iCallback = Constants.k_iSteamUGCCallbacks + 11;
 		public EResult m_eResult;
@@ -2114,6 +2560,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUGCCallbacks + 12)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct AddUGCDependencyResult_t {
 		public const int k_iCallback = Constants.k_iSteamUGCCallbacks + 12;
 		public EResult m_eResult;
@@ -2126,6 +2575,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUGCCallbacks + 13)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoveUGCDependencyResult_t {
 		public const int k_iCallback = Constants.k_iSteamUGCCallbacks + 13;
 		public EResult m_eResult;
@@ -2138,6 +2590,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUGCCallbacks + 14)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct AddAppDependencyResult_t {
 		public const int k_iCallback = Constants.k_iSteamUGCCallbacks + 14;
 		public EResult m_eResult;
@@ -2150,6 +2605,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUGCCallbacks + 15)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct RemoveAppDependencyResult_t {
 		public const int k_iCallback = Constants.k_iSteamUGCCallbacks + 15;
 		public EResult m_eResult;
@@ -2163,6 +2621,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUGCCallbacks + 16)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GetAppDependenciesResult_t {
 		public const int k_iCallback = Constants.k_iSteamUGCCallbacks + 16;
 		public EResult m_eResult;
@@ -2178,6 +2639,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUGCCallbacks + 17)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct DeleteItemResult_t {
 		public const int k_iCallback = Constants.k_iSteamUGCCallbacks + 17;
 		public EResult m_eResult;
@@ -2189,6 +2653,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUGCCallbacks + 18)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct UserSubscribedItemsListChanged_t {
 		public const int k_iCallback = Constants.k_iSteamUGCCallbacks + 18;
 		public AppId_t m_nAppID;
@@ -2199,6 +2666,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUGCCallbacks + 20)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct WorkshopEULAStatus_t {
 		public const int k_iCallback = Constants.k_iSteamUGCCallbacks + 20;
 		public EResult m_eResult;
@@ -2221,6 +2691,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamServersConnected_t {
 		public const int k_iCallback = Constants.k_iSteamUserCallbacks + 1;
 	}
@@ -2232,6 +2705,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 2)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamServerConnectFailure_t {
 		public const int k_iCallback = Constants.k_iSteamUserCallbacks + 2;
 		public EResult m_eResult;
@@ -2245,6 +2721,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 3)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamServersDisconnected_t {
 		public const int k_iCallback = Constants.k_iSteamUserCallbacks + 3;
 		public EResult m_eResult;
@@ -2258,6 +2737,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 13)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct ClientGameServerDeny_t {
 		public const int k_iCallback = Constants.k_iSteamUserCallbacks + 13;
 		
@@ -2275,6 +2757,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 17)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct IPCFailure_t {
 		public const int k_iCallback = Constants.k_iSteamUserCallbacks + 17;
 		public byte m_eFailureType;
@@ -2285,6 +2770,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 25)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct LicensesUpdated_t {
 		public const int k_iCallback = Constants.k_iSteamUserCallbacks + 25;
 	}
@@ -2294,6 +2782,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = 4)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 43)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct ValidateAuthTicketResponse_t {
 		public const int k_iCallback = Constants.k_iSteamUserCallbacks + 43;
 		public CSteamID m_SteamID;
@@ -2306,6 +2797,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 52)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct MicroTxnAuthorizationResponse_t {
 		public const int k_iCallback = Constants.k_iSteamUserCallbacks + 52;
 		
@@ -2319,6 +2813,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 54)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct EncryptedAppTicketResponse_t {
 		public const int k_iCallback = Constants.k_iSteamUserCallbacks + 54;
 		
@@ -2330,6 +2827,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 63)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GetAuthSessionTicketResponse_t {
 		public const int k_iCallback = Constants.k_iSteamUserCallbacks + 63;
 		public HAuthTicket m_hAuthTicket;
@@ -2341,6 +2841,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 64)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GameWebCallback_t {
 		public const int k_iCallback = Constants.k_iSteamUserCallbacks + 64;
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 256)]
@@ -2357,6 +2860,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 65)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct StoreAuthURLResponse_t {
 		public const int k_iCallback = Constants.k_iSteamUserCallbacks + 65;
 		[MarshalAs(UnmanagedType.ByValArray, SizeConst = 512)]
@@ -2373,6 +2879,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 66)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct MarketEligibilityResponse_t {
 		public const int k_iCallback = Constants.k_iSteamUserCallbacks + 66;
 		[MarshalAs(UnmanagedType.I1)]
@@ -2394,6 +2903,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 67)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct DurationControl_t {
 		public const int k_iCallback = Constants.k_iSteamUserCallbacks + 67;
 		
@@ -2416,6 +2928,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserCallbacks + 68)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GetTicketForWebApiResponse_t {
 		public const int k_iCallback = Constants.k_iSteamUserCallbacks + 68;
 		public HAuthTicket m_hAuthTicket;
@@ -2432,6 +2947,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Explicit, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct UserStatsReceived_t {
 		public const int k_iCallback = Constants.k_iSteamUserStatsCallbacks + 1;
 		[FieldOffset(0)]
@@ -2447,6 +2965,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 2)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct UserStatsStored_t {
 		public const int k_iCallback = Constants.k_iSteamUserStatsCallbacks + 2;
 		public ulong m_nGameID;		// Game these stats are for
@@ -2460,6 +2981,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 3)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct UserAchievementStored_t {
 		public const int k_iCallback = Constants.k_iSteamUserStatsCallbacks + 3;
 		
@@ -2483,6 +3007,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 4)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct LeaderboardFindResult_t {
 		public const int k_iCallback = Constants.k_iSteamUserStatsCallbacks + 4;
 		public SteamLeaderboard_t m_hSteamLeaderboard;	// handle to the leaderboard serarched for, 0 if no leaderboard found
@@ -2495,6 +3022,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 5)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct LeaderboardScoresDownloaded_t {
 		public const int k_iCallback = Constants.k_iSteamUserStatsCallbacks + 5;
 		public SteamLeaderboard_t m_hSteamLeaderboard;
@@ -2508,6 +3038,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 6)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct LeaderboardScoreUploaded_t {
 		public const int k_iCallback = Constants.k_iSteamUserStatsCallbacks + 6;
 		public byte m_bSuccess;			// 1 if the call was successful
@@ -2520,6 +3053,9 @@ namespace Steamworks {
 
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 7)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct NumberOfCurrentPlayers_t {
 		public const int k_iCallback = Constants.k_iSteamUserStatsCallbacks + 7;
 		public byte m_bSuccess;			// 1 if the call was successful
@@ -2532,6 +3068,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 8)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct UserStatsUnloaded_t {
 		public const int k_iCallback = Constants.k_iSteamUserStatsCallbacks + 8;
 		public CSteamID m_steamIDUser;	// User whose stats have been unloaded
@@ -2542,6 +3081,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 9)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct UserAchievementIconFetched_t {
 		public const int k_iCallback = Constants.k_iSteamUserStatsCallbacks + 9;
 		
@@ -2563,6 +3105,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 10)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GlobalAchievementPercentagesReady_t {
 		public const int k_iCallback = Constants.k_iSteamUserStatsCallbacks + 10;
 		
@@ -2575,6 +3120,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 11)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct LeaderboardUGCSet_t {
 		public const int k_iCallback = Constants.k_iSteamUserStatsCallbacks + 11;
 		public EResult m_eResult;				// The result of the operation
@@ -2587,6 +3135,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUserStatsCallbacks + 12)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GlobalStatsReceived_t {
 		public const int k_iCallback = Constants.k_iSteamUserStatsCallbacks + 12;
 		public ulong m_nGameID;				// Game global stats were requested for
@@ -2599,6 +3150,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamUtilsCallbacks + 1)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct IPCountry_t {
 		public const int k_iCallback = Constants.k_iSteamUtilsCallbacks + 1;
 	}
@@ -2608,6 +3162,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUtilsCallbacks + 2)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct LowBatteryPower_t {
 		public const int k_iCallback = Constants.k_iSteamUtilsCallbacks + 2;
 		public byte m_nMinutesBatteryLeft;
@@ -2618,6 +3175,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUtilsCallbacks + 3)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamAPICallCompleted_t {
 		public const int k_iCallback = Constants.k_iSteamUtilsCallbacks + 3;
 		public SteamAPICall_t m_hAsyncCall;
@@ -2630,6 +3190,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamUtilsCallbacks + 4)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamShutdown_t {
 		public const int k_iCallback = Constants.k_iSteamUtilsCallbacks + 4;
 	}
@@ -2639,6 +3202,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUtilsCallbacks + 5)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct CheckFileSignature_t {
 		public const int k_iCallback = Constants.k_iSteamUtilsCallbacks + 5;
 		public ECheckFileSignature m_eCheckFileSignature;
@@ -2650,6 +3216,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUtilsCallbacks + 14)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GamepadTextInputDismissed_t {
 		public const int k_iCallback = Constants.k_iSteamUtilsCallbacks + 14;
 		[MarshalAs(UnmanagedType.I1)]
@@ -2661,6 +3230,9 @@ namespace Steamworks {
 	// k_iSteamUtilsCallbacks + 15 through 35 are taken
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamUtilsCallbacks + 36)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct AppResumingFromSuspend_t {
 		public const int k_iCallback = Constants.k_iSteamUtilsCallbacks + 36;
 	}
@@ -2671,6 +3243,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value, Size = 1)]
 	[CallbackIdentity(Constants.k_iSteamUtilsCallbacks + 38)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct FloatingGamepadTextInputDismissed_t {
 		public const int k_iCallback = Constants.k_iSteamUtilsCallbacks + 38;
 	}
@@ -2680,6 +3255,9 @@ namespace Steamworks {
 	//-----------------------------------------------------------------------------
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamUtilsCallbacks + 39)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct FilterTextDictionaryChanged_t {
 		public const int k_iCallback = Constants.k_iSteamUtilsCallbacks + 39;
 		public int m_eLanguage;	// One of ELanguage, or k_LegallyRequiredFiltering
@@ -2687,6 +3265,9 @@ namespace Steamworks {
 
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamVideoCallbacks + 11)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GetVideoURLResult_t {
 		public const int k_iCallback = Constants.k_iSteamVideoCallbacks + 11;
 		public EResult m_eResult;
@@ -2702,6 +3283,9 @@ namespace Steamworks {
 
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamVideoCallbacks + 24)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct GetOPFSettingsResult_t {
 		public const int k_iCallback = Constants.k_iSteamVideoCallbacks + 24;
 		public EResult m_eResult;
@@ -2710,6 +3294,9 @@ namespace Steamworks {
 
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamVideoCallbacks + 4)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct BroadcastUploadStart_t {
 		public const int k_iCallback = Constants.k_iSteamVideoCallbacks + 4;
 		[MarshalAs(UnmanagedType.I1)]
@@ -2718,6 +3305,9 @@ namespace Steamworks {
 
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamVideoCallbacks + 5)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct BroadcastUploadStop_t {
 		public const int k_iCallback = Constants.k_iSteamVideoCallbacks + 5;
 		public EBroadcastUploadResult m_eResult;
@@ -2730,6 +3320,9 @@ namespace Steamworks {
 	/// See also ISteamNetworkingSockets::GetFakeIP
 	[StructLayout(LayoutKind.Sequential, Pack = Packsize.value)]
 	[CallbackIdentity(Constants.k_iSteamNetworkingSocketsCallbacks + 3)]
+#if THE_CONSERVATORY
+	[Star3D.Security.SecurityDeny(Star3D.Security.Capability.Patching)]
+#endif
 	public struct SteamNetworkingFakeIPResult_t {
 		public const int k_iCallback = Constants.k_iSteamNetworkingSocketsCallbacks + 3;
 		
